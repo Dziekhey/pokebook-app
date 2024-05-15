@@ -9,7 +9,7 @@ const SearchBar = () => {
           <input
             type="search"
             placeholder="Enter Pokémon name"
-            className="w-full p-4 rounded-full bg-[#E1E1E1] border-4 border-primary"
+            className="w-full p-4 rounded-full bg-[#E1E1E1] border-4 focus:outline-none border-primary"
           />
           <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-primary rounded-full">
             <SearchIcon sx={{color:'white'}}/>
