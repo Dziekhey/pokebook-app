@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import TopBar from "../../components/TopBar";
 
 const ListView = () => {
   return (
     <>
-    <div>ListView</div>
+      <div>
+        <TopBar />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default ListView
+export default ListView;
