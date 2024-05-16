@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import TopBar from "../../components/TopBar";
 import PokemondCard from "../../components/PokemondCard";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useQueryPokemon from "../../hooks/useQueryPokemon";
-
+import Pagination from "../../components/Pagination";
+import SelectPage from "../../components/SelectPage";
+import ripples from "../../assets/ripples.svg";
 
 const ListView = () => {
   const { allPokemons, loading } = useQueryPokemon();
-  console.log(allPokemons);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -64,83 +63,34 @@ const ListView = () => {
     <div>
       <TopBar />
       <div className="flex justify-center m-5 md:p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
-          {getPageData().map((pokemon, index) => (
-            <PokemondCard key={pokemon.id} pokemon={pokemon} />
-          ))}
-        </div>
+        {loading ? (
+          <img src={ripples} alt="Loading" className="size-96"/>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
+            {getPageData().map((pokemon) => (
+              <PokemondCard key={pokemon.id} pokemon={pokemon} />
+            ))}
+          </div>
+        )}
       </div>
-      <div className="flex p-24 justify-between">
+      <div className="flex px-24 pb-6 justify-between">
         <div className="flex">
-          <button
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            className="mx-1 px-2 py-1 border rounded-lg bg-[#f6ecea] text-black"
-          >
-            <ArrowBackIosIcon />
-          </button>
-          {startPage > 1 && (
-            <>
-              <button
-                onClick={() => handleClick(1)}
-                className={`mx-1 px-3 py-1 border rounded-lg ${
-                  currentPage === 1
-                    ? "bg-primary text-[#f6ecea]"
-                    : "bg-[#f6ecea] text-black"
-                }`}
-              >
-                1
-              </button>
-              {startPage > 2 && <span className="mx-1">...</span>}
-            </>
-          )}
-          {pageNumbers.map((pageNumber) => (
-            <button
-              key={pageNumber}
-              onClick={() => handleClick(pageNumber)}
-              className={`mx-1 px-3 py-1 border rounded-lg ${
-                currentPage === pageNumber
-                  ? "bg-primary text-[#f6ecea]"
-                  : "bg-[#f6ecea] text-black"
-              }`}
-            >
-              {pageNumber}
-            </button>
-          ))}
-          {endPage < totalPages && (
-            <>
-              {endPage < totalPages - 1 && <span className="mx-1">...</span>}
-              <button
-                onClick={() => handleClick(totalPages)}
-                className={`mx-1 px-3 py-1 border rounded-lg ${
-                  currentPage === totalPages
-                    ? "bg-primary text-[#f6ecea]"
-                    : "bg-[#f6ecea] text-black"
-                }`}
-              >
-                {totalPages}
-              </button>
-            </>
-          )}
-          <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            className="mx-1 px-2 py-1 border rounded-lg bg-[#f6ecea] text-black"
-          >
-            <ArrowForwardIosIcon />
-          </button>
+          <Pagination
+            handlePrevPage={handlePrevPage}
+            currentPage={currentPage}
+            startPage={startPage}
+            endPage={endPage}
+            totalPages={totalPages}
+            handleClick={handleClick}
+            pageNumbers={pageNumbers}
+            handleNextPage={handleNextPage}
+          />
         </div>
         <div className="flex ">
-          <select
-            id="itemsPerPage"
-            value={itemsPerPage}
-            onChange={handlePageSizeChange}
-            className="border rounded px-2 py-1 bg-[#d6d0d0]"
-          >
-            <option value={8}>8</option>
-            <option value={12}>12</option>
-            <option value={24}>24</option>
-          </select>
+          <SelectPage
+            itemsPerPage={itemsPerPage}
+            handlePageSizeChange={handlePageSizeChange}
+          />
         </div>
       </div>
     </div>
