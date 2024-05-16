@@ -3,14 +3,16 @@ import TopBar from "../../components/TopBar";
 import PokemondCard from "../../components/PokemondCard";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import useQueryPokemon from "../../hooks/useQueryPokemon";
 
-const data = Array.from({ length: 100 }, (_, i) => i + 1); // Generating sample data
 
 const ListView = () => {
+  const { allPokemons, loading } = useQueryPokemon();
+  console.log(allPokemons);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(allPokemons.length / itemsPerPage);
 
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -36,7 +38,7 @@ const ListView = () => {
   const getPageData = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return data.slice(startIndex, endIndex);
+    return allPokemons.slice(startIndex, endIndex);
   };
 
   const pageNumbers = [];
@@ -63,8 +65,8 @@ const ListView = () => {
       <TopBar />
       <div className="flex justify-center m-5 md:p-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
-          {getPageData().map((d, index) => (
-            <PokemondCard key={index} />
+          {getPageData().map((pokemon, index) => (
+            <PokemondCard key={pokemon.id} pokemon={pokemon} />
           ))}
         </div>
       </div>
