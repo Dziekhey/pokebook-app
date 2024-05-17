@@ -10,7 +10,7 @@ import DetailTabs from "../../components/DetailTabs";
 
 const style = {
   position: "absolute",
-  left: "55%",
+  left: "58%",
   width: 575,
   height: 650,
   bgcolor: "background.paper",
