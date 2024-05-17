@@ -5,7 +5,7 @@ const About = () => {
     <>
       <div className="flex justify-center">
         <div className="">
-          <h1 className="text-xl font-bold mb-4 pl-44">About</h1>
+          <h1 className="text-lg font-bold mb-4 pl-44">About</h1>
           <div className="flex px-10 bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">
             <div className="space-y-3 px-10 flex flex-col bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">
               <p>Height</p>

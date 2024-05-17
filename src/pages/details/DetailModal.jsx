@@ -35,10 +35,12 @@ const DetailModal = ({ open, handleClose }) => {
       >
         <Box sx={style}>
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-40 w-full items-center justify-center rounded-lg relative">
-            <ArrowBackIcon
-              sx={{ width: "40px", height: "40px" }}
-              className="absolute bg-white p-2 m-2 rounded-lg"
-            />
+            <button onClick={handleClose} className="absolute">
+              <ArrowBackIcon
+                sx={{ width: "40px", height: "40px" }}
+                className="absolute bg-white p-2 m-2 rounded-lg"
+              />
+            </button>
             <img
               src={sample}
               alt="Pokemon"
