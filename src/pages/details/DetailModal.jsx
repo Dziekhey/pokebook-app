@@ -46,7 +46,7 @@ const DetailModal = ({ open, handleClose }) => {
             />
           </div>
           <div className="">
-            <h1 className="flex justify-center mt-14 font-bold text-4xl">
+            <h1 className="flex justify-center mt-12 font-bold text-3xl">
               Ivysaur
             </h1>
             <div className="pb-5">
@@ -55,7 +55,7 @@ const DetailModal = ({ open, handleClose }) => {
               </h3>
             </div>
           </div>
-          <div className="flex justify-center w-[510px] h-[215px] mt-2">
+          <div className="flex justify-center w-[510px] h-[215px] ">
             {selectedTab === 0 && <About />}
             {selectedTab === 1 && <Stats />}
             {selectedTab === 2 && <Similar />}

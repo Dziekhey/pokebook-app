@@ -6,7 +6,7 @@ import Tab from "@mui/material/Tab";
 const DetailTabs = ({ selectedTab, handleChange }) => {
   return (
     <>
-      <Box sx={{ width: "370px" }} className="rounded-full bg-[#E1E1E1]">
+      <Box sx={{ width: "370px", height: "60px" }} className="rounded-full mt-6 bg-[#E1E1E1]">
         <Tabs
           value={selectedTab}
           onChange={handleChange}
