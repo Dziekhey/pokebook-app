@@ -8,6 +8,7 @@ import ripples from "../../assets/ripples.svg";
 
 const ListView = () => {
   const { allPokemons, loading } = useQueryPokemon();
+  console.log(allPokemons);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
