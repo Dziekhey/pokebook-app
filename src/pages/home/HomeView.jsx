@@ -2,15 +2,19 @@ import React from 'react';
 import logo from '../../assets/logo.png';
 import SearchBar from '../../components/SearchBar';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../services/ThemeProvider';
 
 const HomeView = () => {
+
+  const { theme } = useTheme();
+
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen px-4 md:px-8">
         <div className="text-center items-center flex flex-col">
           <img src={logo} alt="Pokémon Logo" className="w-64 h-40 md:w-96 md:h-64 mt-4" />
           <h1 className="text-2xl md:text-3xl font-bold mb-2">
-            Poké <span className="text-primary">book</span>
+            Poké <span style={{ color: theme }}>book</span>
           </h1>
           <p className="mb-6 text-sm md:text-base">
             Largest Pokémon index with information <br /> about every Pokemon you can think of.
