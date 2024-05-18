@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DetailModal from "../pages/details/DetailModal";
+import useQueryPokemon from "../hooks/useQueryPokemon";
 
 const PokemondCard = ({ pokemon }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const { singlePokemon } = useQueryPokemon(pokemon.id);
 
   return (
     <>
@@ -42,7 +45,11 @@ const PokemondCard = ({ pokemon }) => {
             </button>
           </div>
         </div>
-        <DetailModal open={open} handleClose={handleClose} />
+        <DetailModal
+          open={open}
+          handleClose={handleClose}
+          singlePokemon={singlePokemon}
+        />
       </div>
     </>
   );

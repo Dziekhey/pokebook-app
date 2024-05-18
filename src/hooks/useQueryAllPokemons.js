@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useQueryPokemon = () => {
+const useQueryAllPokemons = () => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -38,4 +38,4 @@ const useQueryPokemon = () => {
   };
 };
 
-export default useQueryPokemon;
+export default useQueryAllPokemons;

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import TopBar from "../../components/TopBar";
 import PokemondCard from "../../components/PokemondCard";
-import useQueryPokemon from "../../hooks/useQueryPokemon";
+import useQueryAllPokemon from "../../hooks/useQueryAllPokemons";
 import Pagination from "../../components/Pagination";
 import SelectPage from "../../components/SelectPage";
 import ripples from "../../assets/ripples.svg";
 
 const ListView = () => {
-  const { allPokemons, loading } = useQueryPokemon();
-  console.log(allPokemons);
+  const { allPokemons, loading } = useQueryAllPokemon();
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -65,7 +64,7 @@ const ListView = () => {
       <TopBar />
       <div className="flex justify-center m-5 md:p-10">
         {loading ? (
-          <img src={ripples} alt="Loading" className="size-96"/>
+          <img src={ripples} alt="Loading" className="size-96" />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
             {getPageData().map((pokemon) => (
