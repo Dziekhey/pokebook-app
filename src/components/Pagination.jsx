@@ -1,6 +1,7 @@
 import React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useTheme } from "../services/ThemeProvider";
 
 const Pagination = ({
   handlePrevPage,
@@ -12,6 +13,8 @@ const Pagination = ({
   pageNumbers,
   handleNextPage,
 }) => {
+  const { theme } = useTheme();
+
   return (
     <>
       <button
@@ -25,11 +28,12 @@ const Pagination = ({
         <>
           <button
             onClick={() => handleClick(1)}
-            className={`mx-1 px-3 py-1 border rounded-lg ${
+            className="mx-1 px-3 py-1 border rounded-lg"
+            style={
               currentPage === 1
-                ? "bg-primary text-[#f6ecea]"
-                : "bg-[#f6ecea] text-black"
-            }`}
+                ? { backgroundColor: theme, color: "#f6ecea" }
+                : { backgroundColor: "#f6ecea", color: "black" }
+            }
           >
             1
           </button>
@@ -37,28 +41,32 @@ const Pagination = ({
         </>
       )}
       {pageNumbers.map((pageNumber) => (
-        <button
-          key={pageNumber}
-          onClick={() => handleClick(pageNumber)}
-          className={`mx-1 px-3 py-1 border rounded-lg ${
-            currentPage === pageNumber
-              ? "bg-primary text-[#f6ecea]"
-              : "bg-[#f6ecea] text-black"
-          }`}
-        >
-          {pageNumber}
-        </button>
+        <>
+          <button
+            key={pageNumber}
+            onClick={() => handleClick(pageNumber)}
+            className="mx-1 px-3 py-1 border rounded-lg"
+            style={
+              currentPage === pageNumber
+                ? { backgroundColor: theme, color: "#f6ecea" }
+                : { backgroundColor: "#f6ecea", color: "black" }
+            }
+          >
+            {pageNumber}
+          </button>
+        </>
       ))}
       {endPage < totalPages && (
         <>
           {endPage < totalPages - 1 && <span className="mx-1">...</span>}
           <button
             onClick={() => handleClick(totalPages)}
-            className={`mx-1 px-3 py-1 border rounded-lg ${
+            className="mx-1 px-3 py-1 border rounded-lg"
+            style={
               currentPage === totalPages
-                ? "bg-primary text-[#f6ecea]"
-                : "bg-[#f6ecea] text-black"
-            }`}
+                ? { backgroundColor: theme, color: "#f6ecea" }
+                : { backgroundColor: "#f6ecea", color: "black" }
+            }
           >
             {totalPages}
           </button>

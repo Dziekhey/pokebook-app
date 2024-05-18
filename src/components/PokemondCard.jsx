@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import DetailModal from "../pages/details/DetailModal";
+import DetailModal from "../pages/details/DetailView";
 import useQueryPokemon from "../hooks/useQueryPokemon";
+import { useTheme } from "../services/ThemeProvider";
 
 const PokemondCard = ({ pokemon }) => {
   const [open, setOpen] = useState(false);
@@ -9,6 +10,7 @@ const PokemondCard = ({ pokemon }) => {
   const handleClose = () => setOpen(false);
 
   const { singlePokemon } = useQueryPokemon(pokemon.id);
+  const { theme } = useTheme();
 
   return (
     <>
@@ -35,7 +37,8 @@ const PokemondCard = ({ pokemon }) => {
 
           <div className="opacity-0 group-hover:opacity-100 mt-4">
             <button
-              className="bg-primary text-white rounded-xl px-3 py-3 flex justify-between"
+              className="text-white rounded-xl px-3 py-3 flex justify-between"
+              style={{ backgroundColor: theme }}
               onClick={handleOpen}
             >
               View Pokémon
