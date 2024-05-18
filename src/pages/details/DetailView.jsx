@@ -6,6 +6,7 @@ import About from "../../components/About";
 import Stats from "../../components/Stats";
 import Similar from "../../components/Similar";
 import DetailTabs from "../../components/DetailTabs";
+import { Divider } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -67,11 +68,13 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
               ))}
             </div>
           </div>
+          <Divider />
           <div className="flex justify-center w-[510px] h-[215px] ">
             {selectedTab === 0 && <About singlePokemon={singlePokemon} />}
             {selectedTab === 1 && <Stats singlePokemon={singlePokemon} />}
             {selectedTab === 2 && <Similar singlePokemon={singlePokemon} />}
           </div>
+          <Divider className="pt-12" />
           <div className="flex justify-center">
             <DetailTabs selectedTab={selectedTab} handleChange={handleChange} />
           </div>

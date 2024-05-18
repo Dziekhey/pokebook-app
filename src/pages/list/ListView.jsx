@@ -5,13 +5,17 @@ import useQueryAllPokemon from "../../hooks/useQueryAllPokemons";
 import Pagination from "../../components/Pagination";
 import SelectPage from "../../components/SelectPage";
 import ripples from "../../assets/ripples.svg";
+import { useLocation } from "react-router-dom";
 
 const ListView = () => {
   const { allPokemons, loading } = useQueryAllPokemon();
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(allPokemons.length / itemsPerPage);
+  const location = useLocation();
+  const searchResults = location.state?.searchedPokemons || allPokemons; // Use searchResults if available, otherwise use allPokemons
+
+  const totalPages = Math.ceil(searchResults.length / itemsPerPage);
 
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -37,7 +41,7 @@ const ListView = () => {
   const getPageData = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return allPokemons.slice(startIndex, endIndex);
+    return searchResults.slice(startIndex, endIndex);
   };
 
   const pageNumbers = [];
