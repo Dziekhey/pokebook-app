@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import sample from "../../assets/logo.png";
 import About from "../../components/About";
 import Stats from "../../components/Stats";
 import Similar from "../../components/Similar";
@@ -18,12 +17,16 @@ const style = {
   p: 2,
 };
 
-const DetailModal = ({ open, handleClose }) => {
+const DetailModal = ({ open, handleClose, singlePokemon }) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  if (!singlePokemon) {
+    return <div>Loading.....</div>;
+  }
 
   return (
     <div>
@@ -42,25 +45,32 @@ const DetailModal = ({ open, handleClose }) => {
               />
             </button>
             <img
-              src={sample}
+              src={
+                singlePokemon.sprites?.other["official-artwork"].front_default
+              }
               alt="Pokemon"
-              className="w-64 h-64 object-contain absolute left-1/2 transform -translate-x-1/2"
+              className="w-48 h-48 object-contain absolute left-1/2 transform -translate-x-1/2"
             />
           </div>
           <div className="">
-            <h1 className="flex justify-center mt-12 font-bold text-3xl">
-              Ivysaur
+            <h1 className="flex justify-center mt-8 font-bold text-3xl">
+              {singlePokemon.name}
             </h1>
-            <div className="pb-5">
-              <h3 className="flex justify-center rounded-2xl bg-[#E1E1E1] my-3">
-                type
-              </h3>
+            <div className="flex justify-center pb-5">
+              {singlePokemon.types?.map((poketype) => (
+                <h3
+                  key={poketype.type.name}
+                  className="mx-2 mt-3 px-3 py-1 rounded-2xl bg-[#E1E1E1]"
+                >
+                  {poketype.type.name}
+                </h3>
+              ))}
             </div>
           </div>
           <div className="flex justify-center w-[510px] h-[215px] ">
-            {selectedTab === 0 && <About />}
-            {selectedTab === 1 && <Stats />}
-            {selectedTab === 2 && <Similar />}
+            {selectedTab === 0 && <About singlePokemon={singlePokemon} />}
+            {selectedTab === 1 && <Stats singlePokemon={singlePokemon} />}
+            {selectedTab === 2 && <Similar singlePokemon={singlePokemon} />}
           </div>
           <div className="flex justify-center">
             <DetailTabs selectedTab={selectedTab} handleChange={handleChange} />

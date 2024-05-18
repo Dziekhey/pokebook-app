@@ -1,24 +1,29 @@
 import React from "react";
 
-const About = () => {
+const About = ({ singlePokemon }) => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="">
-          <h1 className="text-lg font-bold mb-4 pl-44">About</h1>
-          <div className="flex px-10 bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">
-            <div className="space-y-3 px-10 flex flex-col bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">
+        <div className="w-full">
+          <div className="flex justify-center pb-7">
+            <h1 className="font-bold text-xl">About</h1>
+          </div>
+          <div className="flex w-full px-10 py-5 bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">
+            <div className="space-y-3 px-10 flex flex-col">
               <p>Height</p>
               <p>Weight</p>
               <p>Abilities</p>
             </div>
-            <div className="space-y-3 px-10 flex flex-col bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">
-              <p>1.0m</p>
-              <p>13.0kg</p>
+            <div className="space-y-3 px-10 flex flex-col">
+              <p>{singlePokemon.height}m</p>
+              <p>{singlePokemon.weight}kg</p>
               <div className="flex">
                 <ul className="list-disc pl-5">
-                  <li className="pb-1">overgrow,</li>
-                  <li>chlorophyll</li>
+                  {singlePokemon.abilities.map((poke_ability) => (
+                    <li key={poke_ability.ability.name}>
+                      {poke_ability.ability.name}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
