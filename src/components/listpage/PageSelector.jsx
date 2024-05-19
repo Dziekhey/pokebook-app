@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectPage = ({ itemsPerPage, handlePageSizeChange }) => {
+const PageSelector = ({ itemsPerPage, handlePageSizeChange }) => {
   return (
     <>
       <select
@@ -17,4 +17,4 @@ const SelectPage = ({ itemsPerPage, handlePageSizeChange }) => {
   );
 };
 
-export default SelectPage;
+export default PageSelector;

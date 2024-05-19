@@ -2,10 +2,11 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import About from "../../components/About";
-import Stats from "../../components/Stats";
-import Similar from "../../components/Similar";
-import DetailTabs from "../../components/DetailTabs";
+import About from "../../components/detailpage/About";
+import Stats from "../../components/detailpage/Stats";
+import Similar from "../../components/detailpage/Similar";
+import DetailTabs from "../../components/detailpage/DetailTabs";
+import { Divider } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -67,11 +68,13 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
               ))}
             </div>
           </div>
+          <Divider />
           <div className="flex justify-center w-[510px] h-[215px] ">
             {selectedTab === 0 && <About singlePokemon={singlePokemon} />}
             {selectedTab === 1 && <Stats singlePokemon={singlePokemon} />}
             {selectedTab === 2 && <Similar singlePokemon={singlePokemon} />}
           </div>
+          <Divider className="pt-12" />
           <div className="flex justify-center">
             <DetailTabs selectedTab={selectedTab} handleChange={handleChange} />
           </div>

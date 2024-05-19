@@ -5,7 +5,7 @@ const About = ({ singlePokemon }) => {
     <>
       <div className="flex justify-center">
         <div className="w-full">
-          <div className="flex justify-center pb-7">
+          <div className="flex justify-center pb-5 pt-2">
             <h1 className="font-bold text-xl">About</h1>
           </div>
           <div className="flex w-full px-10 py-5 bg-gradient-to-r from-[#FFFFFF] via-[#f1efef] to-[#FFFFFF]">

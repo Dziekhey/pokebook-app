@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../assets/logo.png';
-import SearchBar from '../../components/SearchBar';
+import SearchBar from '../../components/homepage/SearchBar';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../services/ThemeProvider';
 

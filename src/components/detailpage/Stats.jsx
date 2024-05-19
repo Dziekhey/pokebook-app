@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../services/ThemeProvider";
+import { useTheme } from "../../services/ThemeProvider";
 
 const Stats = ({ singlePokemon }) => {
   const { theme } = useTheme();
@@ -7,7 +7,9 @@ const Stats = ({ singlePokemon }) => {
   return (
     <>
       <div className="w-[80%]">
-        <h2 className="text-lg font-bold mb-4 pl-48">Stats</h2>
+        <div className="flex justify-center pb-5 pt-2">
+          <h1 className="font-bold text-xl">Stats</h1>
+        </div>
         <div className="flex w-full px-3 py-2 bg-gradient-to-r from-[#FFFFFF] via-[#e4e1e1] to-[#FFFFFF]">
           <div className="space-y-2 w-[40%] flex flex-col">
             <p>Hp</p>

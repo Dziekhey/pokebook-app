@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useTheme } from "../services/ThemeProvider";
+import { useTheme } from "../../services/ThemeProvider";
 
 const Pagination = ({
   handlePrevPage,

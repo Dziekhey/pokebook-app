@@ -1,7 +1,7 @@
 import React from "react";
 import SimilarCard from "./SimilarCard";
-import useQueryAllPokemons from "../hooks/useQueryAllPokemons";
-import ripples from "../assets/ripples.svg";
+import useQueryAllPokemons from "../../hooks/useQueryAllPokemons";
+import ripples from "../../assets/ripples.svg";
 
 const Similar = ({ singlePokemon }) => {
   const { allPokemons, loading } = useQueryAllPokemons();
@@ -21,9 +21,9 @@ const Similar = ({ singlePokemon }) => {
 
   return (
     <div className="w-full">
-      <div className="flex justify-center pb-7">
-        <h1 className="font-bold text-xl">Similar</h1>
-      </div>
+      <div className="flex justify-center pb-5 pt-2">
+          <h1 className="font-bold text-xl">Similar</h1>
+        </div>
       <div className="flex justify-center bg-gradient-to-r from-[#FFFFFF] via-[#e4e1e1] to-[#FFFFFF]">
         {loading ? (
           <img src={ripples} alt="Loading" className="size-44" />

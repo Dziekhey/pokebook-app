@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Divider } from "@mui/material";
-import { useTheme } from "../services/ThemeProvider";
+import { useTheme } from "../../services/ThemeProvider";
 
 const style = {
   position: "absolute",
