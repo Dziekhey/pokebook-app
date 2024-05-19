@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../services/ThemeProvider";
+import { useTheme } from "../../services/ThemeProvider";
 
 const Stats = ({ singlePokemon }) => {
   const { theme } = useTheme();

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { useTheme } from "../services/ThemeProvider";
-import useQueryAllPokemons from "../hooks/useQueryAllPokemons";
+import { useTheme } from "../../services/ThemeProvider";
+import useQueryAllPokemons from "../../hooks/useQueryAllPokemons";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
@@ -28,8 +28,6 @@ const SearchBar = () => {
       console.log(error);
     }
   };
-
- 
 
   return (
     <div className="w-full max-w-lg md:max-w-xl lg:max-w-2xl relative">

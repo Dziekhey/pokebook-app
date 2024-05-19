@@ -1,7 +1,7 @@
 import React from "react";
 import SimilarCard from "./SimilarCard";
-import useQueryAllPokemons from "../hooks/useQueryAllPokemons";
-import ripples from "../assets/ripples.svg";
+import useQueryAllPokemons from "../../hooks/useQueryAllPokemons";
+import ripples from "../../assets/ripples.svg";
 
 const Similar = ({ singlePokemon }) => {
   const { allPokemons, loading } = useQueryAllPokemons();

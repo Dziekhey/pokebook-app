@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import DetailModal from "../pages/details/DetailView";
-import useQueryPokemon from "../hooks/useQueryPokemon";
-import { useTheme } from "../services/ThemeProvider";
+import DetailModal from "../../pages/details/DetailView";
+import useQueryPokemon from "../../hooks/useQueryPokemon";
+import { useTheme } from "../../services/ThemeProvider";
 
 const PokemondCard = ({ pokemon }) => {
   const [open, setOpen] = useState(false);

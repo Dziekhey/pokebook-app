@@ -2,10 +2,10 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import About from "../../components/About";
-import Stats from "../../components/Stats";
-import Similar from "../../components/Similar";
-import DetailTabs from "../../components/DetailTabs";
+import About from "../../components/detailpage/About";
+import Stats from "../../components/detailpage/Stats";
+import Similar from "../../components/detailpage/Similar";
+import DetailTabs from "../../components/detailpage/DetailTabs";
 import { Divider } from "@mui/material";
 
 const style = {

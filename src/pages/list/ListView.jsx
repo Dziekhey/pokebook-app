@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import TopBar from "../../components/TopBar";
-import PokemondCard from "../../components/PokemondCard";
+import TopBar from "../../components/listpage/TopBar";
+import PokemondCard from "../../components/listpage/PokemondCard";
 import useQueryAllPokemon from "../../hooks/useQueryAllPokemons";
-import Pagination from "../../components/Pagination";
-import SelectPage from "../../components/SelectPage";
+import Pagination from "../../components/listpage/Pagination";
+import PageSelector from "../../components/listpage/PageSelector";
 import ripples from "../../assets/ripples.svg";
+import nodata from "../../assets/nodata.svg";
 import { useLocation } from "react-router-dom";
 
 const ListView = () => {
@@ -13,7 +14,8 @@ const ListView = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const location = useLocation();
-  const searchResults = location.state?.searchedPokemons || allPokemons; // Use searchResults if available, otherwise use allPokemons
+  // Use searchResults if available, otherwise use allPokemons
+  const searchResults = location.state?.searchedPokemons || allPokemons;
 
   const totalPages = Math.ceil(searchResults.length / itemsPerPage);
 
@@ -35,7 +37,8 @@ const ListView = () => {
 
   const handlePageSizeChange = (event) => {
     setItemsPerPage(Number(event.target.value));
-    setCurrentPage(1); // Reset to the first page when changing the number of items per page
+    // Reset to the first page when changing the number of items per page
+    setCurrentPage(1);
   };
 
   const getPageData = () => {
@@ -69,6 +72,11 @@ const ListView = () => {
       <div className="flex justify-center m-5 md:p-10">
         {loading ? (
           <img src={ripples} alt="Loading" className="size-96" />
+        ) : searchResults.length === 0 ? (
+          <div>
+            <h1 className="font-bold text-2xl pb-5">No Pokemon Found</h1>
+            <img src={nodata} alt="Pokemon not found" className="size-80" />
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
             {getPageData().map((pokemon) => (
@@ -91,7 +99,7 @@ const ListView = () => {
           />
         </div>
         <div className="flex ">
-          <SelectPage
+          <PageSelector
             itemsPerPage={itemsPerPage}
             handlePageSizeChange={handlePageSizeChange}
           />

@@ -23,7 +23,7 @@ const useQueryAllPokemons = () => {
 
       fetchPokemonDetails(data.results);
     } catch (error) {
-      console.error("Error fetching Pokémon data:", error);
+      console.log("Error fetching Pokémon data:", error);
       setLoading(false);
     }
   };
