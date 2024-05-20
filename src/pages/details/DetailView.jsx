@@ -8,15 +8,6 @@ import Similar from "../../components/detailpage/Similar";
 import DetailTabs from "../../components/detailpage/DetailTabs";
 import { Divider } from "@mui/material";
 
-const style = {
-  position: "absolute",
-  left: "58%",
-  width: 575,
-  height: 650,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 2,
-};
 
 const DetailModal = ({ open, handleClose, singlePokemon }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -37,12 +28,12 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box  className="modal-box flex flex-col items-center justify-center">
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-40 w-full items-center justify-center rounded-lg relative">
-            <button onClick={handleClose} className="absolute">
+            <button onClick={handleClose} className="absolute top-0 left-0">
               <ArrowBackIcon
                 sx={{ width: "40px", height: "40px" }}
-                className="absolute bg-white p-2 m-2 rounded-lg"
+                className="bg-white p-2 m-2 rounded-lg"
               />
             </button>
             <img
@@ -53,7 +44,7 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
               className="w-48 h-48 object-contain absolute left-1/2 transform -translate-x-1/2"
             />
           </div>
-          <div className="">
+          <div>
             <h1 className="flex justify-center mt-8 font-bold text-3xl">
               {singlePokemon.name}
             </h1>
@@ -69,13 +60,13 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
             </div>
           </div>
           <Divider />
-          <div className="flex justify-center w-[510px] h-[215px] ">
+          <div className="flex justify-center w-full border-t h-auto lg:h-[215px]">
             {selectedTab === 0 && <About singlePokemon={singlePokemon} />}
             {selectedTab === 1 && <Stats singlePokemon={singlePokemon} />}
             {selectedTab === 2 && <Similar singlePokemon={singlePokemon} />}
           </div>
-          <Divider className="pt-12" />
-          <div className="flex justify-center">
+          <Divider className="pt-12 border-b" />
+          <div className="flex justify-center border-t w-full ">
             <DetailTabs selectedTab={selectedTab} handleChange={handleChange} />
           </div>
         </Box>

@@ -48,7 +48,7 @@ const ListView = () => {
   };
 
   const pageNumbers = [];
-  const maxPageButtons = 5;
+  const maxPageButtons = 4;
   const halfMaxButtons = Math.floor(maxPageButtons / 2);
 
   let startPage = Math.max(1, currentPage - halfMaxButtons);
@@ -78,15 +78,15 @@ const ListView = () => {
             <img src={nodata} alt="Pokemon not found" className="size-80" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {getPageData().map((pokemon) => (
               <PokemondCard key={pokemon.id} pokemon={pokemon} />
             ))}
           </div>
         )}
       </div>
-      <div className="flex px-24 pb-6 justify-between">
-        <div className="flex">
+      <div className="px-2 flex lg:px-24 pb-6 justify-between">
+        <div className="flex ">
           <Pagination
             handlePrevPage={handlePrevPage}
             currentPage={currentPage}
@@ -98,7 +98,7 @@ const ListView = () => {
             handleNextPage={handleNextPage}
           />
         </div>
-        <div className="flex ">
+        <div>
           <PageSelector
             itemsPerPage={itemsPerPage}
             handlePageSizeChange={handlePageSizeChange}

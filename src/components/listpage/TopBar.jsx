@@ -42,18 +42,18 @@ const TopBar = () => {
           <img
             src={logo}
             alt="Pokebook Logo"
-            className="h-[84px] mt-10 ml-[40px] object-contain "
+            className="h-12 lg:h-24 mt-10 ml-1 lg:ml-[40px]"
           />
-          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-800 mb-1">
+          <h1 className="lg:text-3xl text-sm font-bold text-zinc-800 lg:mb-1">
             Poké
             <span style={{ color: theme }}>book</span>
           </h1>
         </div>
-        <div className="flex-grow flex mx-5 md:mx-72 relative">
+        <div className="flex-grow flex mx-3 md:mx-44 relative">
           <input
             type="search"
             placeholder="Enter Pokémon name"
-            className="w-full max-w-md p-2 pl-10 bg-white rounded-full border border-zinc-300 shadow-md focus:outline-none"
+            className="lg:w-full w-44 max-w-md p-2 pl-10 bg-white rounded-full border border-zinc-300 shadow-md focus:outline-none"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -65,7 +65,7 @@ const TopBar = () => {
           </button>
         </div>
         <button
-          className="bg- mr-6 w-5 h-4 md:w-10 md:h-10 rounded-full focus:outline-none ring-1 ring-black ring-offset-2"
+          className="mr-3 w-4 h-4 md:w-10 md:h-10 rounded-full focus:outline-none ring-1 ring-black ring-offset-2"
           onClick={handleOpen}
           style={{ backgroundColor: theme }}
         ></button>

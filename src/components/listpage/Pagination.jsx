@@ -16,7 +16,7 @@ const Pagination = ({
   const { theme } = useTheme();
 
   return (
-    <>
+    <div className="flex items-center justify-center">
       <button
         onClick={handlePrevPage}
         disabled={currentPage === 1}
@@ -41,20 +41,18 @@ const Pagination = ({
         </>
       )}
       {pageNumbers.map((pageNumber) => (
-        <>
-          <button
-            key={pageNumber}
-            onClick={() => handleClick(pageNumber)}
-            className="mx-1 px-3 py-1 border rounded-lg"
-            style={
-              currentPage === pageNumber
-                ? { backgroundColor: theme, color: "#f6ecea" }
-                : { backgroundColor: "#f6ecea", color: "black" }
-            }
-          >
-            {pageNumber}
-          </button>
-        </>
+        <button
+          key={pageNumber}
+          onClick={() => handleClick(pageNumber)}
+          className="mx-1 px-3 py-1 border rounded-lg"
+          style={
+            currentPage === pageNumber
+              ? { backgroundColor: theme, color: "#f6ecea" }
+              : { backgroundColor: "#f6ecea", color: "black" }
+          }
+        >
+          {pageNumber}
+        </button>
       ))}
       {endPage < totalPages && (
         <>
@@ -79,7 +77,7 @@ const Pagination = ({
       >
         <ArrowForwardIosIcon />
       </button>
-    </>
+    </div>
   );
 };
 

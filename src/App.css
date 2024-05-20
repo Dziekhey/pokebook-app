@@ -5,3 +5,56 @@
 body{
     background-color: #E1E1E1;
 }
+
+/* CSS for detail view */
+.modal-box {
+    position: absolute;
+    left: 79%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 575px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 24px;
+    padding: 16px;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 1280px) {
+    .modal-box {
+      left: 50%;
+      height: 80vh;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .modal-box {
+      left: 50%;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .modal-box {
+      left: 50%;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .modal-box {
+      left: 50%;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .modal-box {
+      left: 50%;
+      width: 95%;
+      height: auto;
+    }
+  }
+
+  
