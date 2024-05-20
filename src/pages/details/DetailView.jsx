@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -7,14 +7,30 @@ import Stats from "../../components/detailpage/Stats";
 import Similar from "../../components/detailpage/Similar";
 import DetailTabs from "../../components/detailpage/DetailTabs";
 import { Divider } from "@mui/material";
-
+import { getDominantColor } from "../../services/DominantColor";
 
 const DetailModal = ({ open, handleClose, singlePokemon }) => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [bgColor, setBgColor] = useState("");
+  console.log(bgColor);
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  const getBgColor = async () => {
+    if (singlePokemon?.sprites?.other["official-artwork"].front_default) {
+      const color = await getDominantColor(
+        singlePokemon.sprites.other["official-artwork"].front_default
+      );
+      if (color) setBgColor(color);
+    }
+  };
+
+  useEffect(() => {
+    getBgColor();
+    // eslint-disable-next-line
+  }, [singlePokemon]);
 
   if (!singlePokemon) {
     return <div>Loading.....</div>;
@@ -28,8 +44,13 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box  className="modal-box flex flex-col items-center justify-center">
-          <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-40 w-full items-center justify-center rounded-lg relative">
+        <Box className="modal-box flex flex-col items-center justify-center">
+          <div
+            className="h-40 w-full items-center justify-center rounded-lg relative"
+            style={{
+              backgroundColor: bgColor ? `rgb(${bgColor})` : "transparent",
+            }}
+          >
             <button onClick={handleClose} className="absolute top-0 left-0">
               <ArrowBackIcon
                 sx={{ width: "40px", height: "40px" }}
@@ -66,7 +87,7 @@ const DetailModal = ({ open, handleClose, singlePokemon }) => {
             {selectedTab === 2 && <Similar singlePokemon={singlePokemon} />}
           </div>
           <Divider className="pt-12 border-b" />
-          <div className="flex justify-center border-t w-full ">
+          <div className="flex justify-center border-t w-full">
             <DetailTabs selectedTab={selectedTab} handleChange={handleChange} />
           </div>
         </Box>
